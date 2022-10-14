@@ -12,7 +12,7 @@ const tourRoute = require("./routes/tour");
 
 //conect db
 dotenv.config();
-mongoose.connect(process.env.MONGODB_LOCAL_URL, () => {
+mongoose.connect(process.env.MONGODB_ATLAS_URL, () => {
   console.log("connected to Mongodb");
 });
 
