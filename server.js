@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_ATLAS_URL, () => {
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
 app.use(morgan("common"));
-app.use(imageUpload());
+app.use(imageUpload({limits: { fileSize: 1 * 1024 * 1024 }}));
 
 //routes
 app.use("/tour-package", tourRoutePackage);

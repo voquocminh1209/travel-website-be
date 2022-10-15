@@ -3,7 +3,10 @@ const router = require("express").Router();
 const tourController = require("../controllers/tourController");
 
 //get all tour
-router.get("/", tourController.getAllTourByTourPackageId);
+router.get("/", tourController.getAllTour);
+
+//get all tour by tour package id
+router.get("/:tour_package_id", tourController.getAllTourByTourPackageId);
 
 //add new tour
 router.post("/", tourController.addNewTour);

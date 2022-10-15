@@ -55,6 +55,16 @@ const tourPackageController = {
       res.status(500).json(error);
     }
   },
+
+  //delete tour-package
+  deleteTourPackageById:async(req, res)=>{
+    try {
+      const result = await TourPackage.findByIdAndDelete(req.params.id );
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  }
 };
 
 module.exports = tourPackageController;

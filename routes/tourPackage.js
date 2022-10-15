@@ -11,4 +11,7 @@ router.get("/", tourPackageController.getAllTourPackage);
 //update tour package
 router.put("/update/:id", tourPackageController.updateTourPackage);
 
+//delete tour package by id
+router.delete("/delete/:id", tourPackageController.deleteTourPackageById);
+
 module.exports = router;
