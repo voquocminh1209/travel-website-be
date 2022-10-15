@@ -1,13 +1,21 @@
 const Tour = require("../model/tour");
 
 const tourController = {
+  //get all tour
+  getAllTour: async(req,res)=>{
+    try {
+      const tours = await Tour.find();
+      res.status(200).json(tours);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
+
   //get all tour by tour package id
   getAllTourByTourPackageId: async (req, res) => {
     try {
-      const tours = await Tour.find({
-        tour_package: req.query.tour_package_id,
-      });
-      res.status(200).json(req.body);
+      const tours = await Tour.find({tour_package: req.params.tour_package_id});
+      res.status(200).json(tours);
     } catch (error) {
       res.status(500).json(error);
     }
