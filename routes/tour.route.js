@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const tourController = require("../controllers/tourController");
+const tourController = require("../controllers/tour.controller");
 
 //get all tour
 router.get("/", tourController.getAllTour);

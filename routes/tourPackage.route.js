@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const tourPackageController = require("../controllers/tourPackageController");
+const tourPackageController = require("../controllers/tourPackage.controller");
 
 //add tour package
 router.post("/", tourPackageController.addTourPackage);

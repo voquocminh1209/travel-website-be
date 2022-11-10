@@ -1,4 +1,4 @@
-const TourPackage = require("../model/tourPackage");
+const TourPackage = require("../model/tourPackage.model");
 
 const tourPackageController = {
   //add tour-package
@@ -57,14 +57,14 @@ const tourPackageController = {
   },
 
   //delete tour-package
-  deleteTourPackageById:async(req, res)=>{
+  deleteTourPackageById: async (req, res) => {
     try {
-      const result = await TourPackage.findByIdAndDelete(req.params.id );
+      const result = await TourPackage.findByIdAndDelete(req.params.id);
       res.status(200).json(result);
     } catch (error) {
       res.status(500).json(error);
     }
-  }
+  },
 };
 
 module.exports = tourPackageController;

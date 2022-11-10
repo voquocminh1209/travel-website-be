@@ -1,4 +1,4 @@
-const Tour = require("../model/tour");
+const Tour = require("../model/tour.model");
 
 const tourController = {
   //get all tour
