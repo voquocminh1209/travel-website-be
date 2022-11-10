@@ -1,8 +1,7 @@
 const TourPackage = require("../model/tourPackage.model");
 
 const tourPackageController = {
-  //add tour-package
-  addTourPackage: async (req, res) => {
+  createTourPackage: async (req, res) => {
     try {
       const newTourPackage = new TourPackage({
         name: req.body.name,
@@ -16,13 +15,19 @@ const tourPackageController = {
         question: req.body.question,
       });
       const saveTourPackage = await newTourPackage.save();
-      res.status(200).json(saveTourPackage);
+      res.status(200).json({
+        success: true,
+        message: "Tạo gói tour thành công!",
+        saveTourPackage
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Lỗi server!"
+      });
     }
   },
 
-  //get all tour-package
   getAllTourPackage: async (req, res) => {
     try {
       const tourPackages = await TourPackage.find();

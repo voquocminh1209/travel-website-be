@@ -1,17 +1,13 @@
 const router = require("express").Router();
-
+const verifyToken = require("../middleware/auth")
 const tourPackageController = require("../controllers/tourPackage.controller");
 
-//add tour package
-router.post("/", tourPackageController.addTourPackage);
+router.post("/", tourPackageController.createTourPackage);
 
-//get all tour package
 router.get("/", tourPackageController.getAllTourPackage);
 
-//update tour package
 router.put("/update/:id", tourPackageController.updateTourPackage);
 
-//delete tour package by id
 router.delete("/delete/:id", tourPackageController.deleteTourPackageById);
 
 module.exports = router;
