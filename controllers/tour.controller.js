@@ -1,57 +1,104 @@
 const Tour = require("../model/tour.model");
 
 const tourController = {
-  //get all tour
-  getAllTour: async(req,res)=>{
+  getTours: async (req, res) => {
     try {
       const tours = await Tour.find();
-      res.status(200).json(tours);
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        tours,
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
     }
   },
 
-  //get all tour by tour package id
-  getAllTourByTourPackageId: async (req, res) => {
+  getTourById: async (req, res) => {
     try {
-      const tours = await Tour.find({tour_package: req.params.tour_package_id});
-      res.status(200).json(tours);
+      const tour = await Tour.findById(req.params.id);
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        tour,
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
     }
   },
 
-  //add new tour
-  addNewTour: async (req, res) => {
+  getToursByTourPackageId: async (req, res) => {
+    try {
+      const tours = await Tour.find({ tourPackage: req.params.id });
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        tours,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+  },
+
+  createTour: async (req, res) => {
     try {
       const newTour = new Tour(req.body);
       const saveTour = await newTour.save();
-      res.status(200).json(saveTour);
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        saveTour,
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
     }
   },
 
-  //update tour by tour id
   updateTour: async (req, res) => {
     try {
-      const result = await Tour.findOneAndUpdate(
+      const updatedTour = await Tour.findOneAndUpdate(
         { _id: req.params.id },
-        req.body
+        req.body,
+        { new: true }
       );
-      res.status(200).json(result);
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        updatedTour,
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
     }
   },
 
-  //delete tour by id
   deleteTour: async (req, res) => {
     try {
-      const result = await Tour.findByIdAndDelete(req.params.id );
-      res.status(200).json(result);
+      const deletedTour = await Tour.findByIdAndDelete(req.params.id);
+      res.status(200).json({
+        success: true,
+        message: "Successfully",
+        deletedTour,
+      });
     } catch (error) {
-      res.status(500).json(error);
+      res.status(500).json({
+        success: false,
+        message: "Internal Server Error",
+      });
     }
   },
 };

@@ -7,25 +7,24 @@ const dotenv = require("dotenv");
 const imageUpload = require("express-fileupload");
 
 const authRoute = require("./routes/auth.route")
-const tourRoutePackage = require("./routes/tourPackage.route");
+const tourPackageRoute = require("./routes/tour-package.route");
 const tourRoute = require("./routes/tour.route");
 
 
 //conect db
 dotenv.config();
-mongoose.connect(process.env.MONGODB_ATLAS_URL, () => {
+mongoose.connect(process.env.MONGODB_ATLAS_URI, () => {
   console.log("connected to Mongodb");
 });
 
 //config
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cors());
-// app.use(morgan("common"));
 app.use(imageUpload({limits: { fileSize: 1 * 1024 * 1024 }}));
 
 //routes
-app.use("/api/tour-package", tourRoutePackage);
-app.use("/api/tour", tourRoute);
+app.use("/api/tour-packages", tourPackageRoute);
+app.use("/api/tours", tourRoute);
 app.use("/api/auth", authRoute)
 
 //start server

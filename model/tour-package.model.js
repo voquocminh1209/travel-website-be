@@ -3,24 +3,19 @@ const mongoose = require("mongoose");
 const tourPackageSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   time: {
     type: String,
-    required: true
   },
   vehicle: {
     type: String,
-    required: true
   },
-  departure_place: {
+  departurePlace: {
     type: String,
-    required: true
   },
   destination: {
     type: String,
-    required: true
   },
   schedule: {
     type: String,
@@ -28,12 +23,8 @@ const tourPackageSchema = new mongoose.Schema({
   policy: {
     type: String,
   },
-  question: {
-    type: String,
-  },
   thumbnail: {
-    type: Object,
-    required: true
+    type: String,
   },
 });
 

@@ -1,38 +1,32 @@
 const mongoose = require("mongoose");
 
 const tourSchema = new mongoose.Schema({
-  tour_id: {
+  tourId: {
     type: String,
     required: true
   },
-  tour_package:{
+  tourPackage:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TourPackage',
     required: true
   },
-  departure_date:{
+  departureDate:{
     type: Date,
-    required: true
   },
   price:{
     type: Number,
-    required: true
   },
-  child_price:{
+  childPrice:{
     type: Number,
-    required: true
   },
-  baby_price:{
+  babyPrice:{
     type: Number,
-    required: true
   },
-  total_seat:{
+  totalSeat:{
     type: Number,
-    required: true
   },
-  remaining_seat:{
+  remainingSeat:{
     type: Number,
-    required: true
   }
 });
 
