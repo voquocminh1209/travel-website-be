@@ -9,7 +9,8 @@ const generateAccessToken = (user) => {
 
 const authController = {
   login: async (req, res) => {
-    const { username, password } = req.body;
+    console.log(req.query)
+    const { username, password } = req.query;
     if (!username || !password) {
       return res.status(400).json({
         success: false,
