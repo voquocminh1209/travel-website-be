@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const tourSchema = new mongoose.Schema({
+  tourId: {
+    type: String,
+  },
   tourPackage:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TourPackage',
